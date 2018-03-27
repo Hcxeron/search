@@ -10,11 +10,11 @@ switch(os.platform())
         break;
     }
     default:{
-        backslash = '//';
+        backslash = '/';
     }
 }
 
-// legal amount of arguments -- is 4 for : node search.js [substring] [extension]
+// legal amount of arguments -- is 4 for : node search.js [extension] [substring]
 if (process.argv.length == 4) {
   var fs = require('fs');
   var scanFolderAndSubFolders = function (currentPath) {
@@ -40,7 +40,7 @@ if (process.argv.length == 4) {
     var foundFlag = false;
     fullPathArr.forEach(filePath => {
       // match extension and substring with arguments
-      if (filePath[2] == process.argv[3] && filePath[1].includes(process.argv[2])) {
+      if (filePath[2] == process.argv[2] && filePath[1].includes(process.argv[3])) {
         console.log(filePath[0] + backslash + filePath[1] + '.' + filePath[2]);
         if (!foundFlag) {
           foundFlag = true;
