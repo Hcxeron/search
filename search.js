@@ -1,5 +1,6 @@
 'use strict';
 
+var os = require('os');
 var fullPathArr = [];
 var backslash;
 switch(os.platform())
