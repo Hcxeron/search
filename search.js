@@ -2,7 +2,7 @@
 
 var fullPathArr = [];
 
-// legal amount of arguments -- is 4 for : node search.js [substring] [extention]
+// legal amount of arguments -- is 4 for : node search.js [substring] [extension]
 if (process.argv.length == 4) {
   var fs = require('fs');
   var scanFolderAndSubFolders = function (currentPath) {
