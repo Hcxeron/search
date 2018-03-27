@@ -1,6 +1,17 @@
 'use strict';
 
 var fullPathArr = [];
+var backslash;
+switch(os.platform())
+{
+    case 'win32':{
+        backslash = '\\';
+        break;
+    }
+    default:{
+        backslash = '//';
+    }
+}
 
 // legal amount of arguments -- is 4 for : node search.js [substring] [extension]
 if (process.argv.length == 4) {
@@ -8,7 +19,7 @@ if (process.argv.length == 4) {
   var scanFolderAndSubFolders = function (currentPath) {
     var files = fs.readdirSync(currentPath);
     for (var i in files) {
-      var currentFile = currentPath + '\\' + files[i];
+      var currentFile = currentPath + backslash + files[i];
       var stats = fs.statSync(currentFile);
       if (stats.isFile()) {
         var filePathArr = [];
@@ -29,7 +40,7 @@ if (process.argv.length == 4) {
     fullPathArr.forEach(filePath => {
       // match extension and substring with arguments
       if (filePath[2] == process.argv[3] && filePath[1].includes(process.argv[2])) {
-        console.log(filePath[0] + '\\' + filePath[1] + '.' + filePath[2]);
+        console.log(filePath[0] + backslash + filePath[1] + '.' + filePath[2]);
         if (!foundFlag) {
           foundFlag = true;
         }
